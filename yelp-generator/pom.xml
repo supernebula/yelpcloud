@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>yelpcloud</artifactId>
+        <groupId>com.evol</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>yelp-generator</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>yelp-generator-bmc</module>
+        <module>yelp-generator-csc</module>
+        <module>yelp-generator-usc</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper</artifactId>
+                <version>4.1.5</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

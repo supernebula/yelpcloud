@@ -1,0 +1,44 @@
+server:
+  port: 8011
+spring:
+  application:
+    name: yelp-client-web-mobile
+
+eureka:
+  client:
+    service-url:
+      # 指定eureka server通信地址，注意/eureka/小尾巴不能少
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
+  instance:
+    # 是否注册IP到eureka server，如不指定或设为false，那就会注册主机名到eureka server
+    prefer-ip-address: true
+
+logging:
+  level:
+    com.evol.manage.feign.UserFeignClient: debug
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: none
+    default-to-properties: false   #默认属性配置优先级高于代码配置，如果你想修改代码配置方式的优先级
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response: true
+  hystrix:
+    enabled: true   #默认Feign是不启用Hystrix， true开启
+
+#为/actuator//health 端点配置显示详情：
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["hystrix.stream", "health"]
+  endpoint:
+    health:
+      # 是否展示健康检查详情
+      show-details: always

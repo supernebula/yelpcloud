@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--读取配置文件-->
+    <properties resource="generator.properties" />
+
+    <context id="MySQLContext" targetRuntime="MyBatis3">
+        <!--设置文件编码-->
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <!--配置去掉所有生成的注释-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!--设置数据库连接驱动-->
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+
+        <!--当字段类型是 DECIMAL或者 NUMERIC时，是否强制转换为BigDecimal,否的话会自动根据规模的大小选择合适的类型  -->
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- 生成模型的包名和位置-->
+        <javaModelGenerator targetPackage="com.evol.domain.model" targetProject="yelp-server/yelp-bmc-server/src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- 生成映射文件的包名和位置-->
+        <sqlMapGenerator targetPackage="com.evol.mapper"  targetProject="yelp-server/yelp-bmc-server/src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- 生成DAO的包名和位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.evol.mapper" targetProject="yelp-server/yelp-bmc-server/src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名，需要根据自己的需求修改-->
+        <!--<table  tableName="tableName1" domainObjectName="domainObjectName1" enableCountByExample="false"-->
+                <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true" />-->
+            <!--&lt;!&ndash; 该行是避免生成BLOBs文件，数据库中只要保存text类型的字段必须要该行&ndash;&gt;-->
+            <!--&lt;!&ndash;<columnOverride column="字段名" javaType="java.lang.String" jdbcType="VARCHAR" />&ndash;&gt;-->
+        <!--</table>-->
+
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名，需要根据自己的需求修改-->
+        <table  tableName="business" domainObjectName="Business">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            <!-- 该行是避免生成BLOBs文件，数据库中只要保存text类型的字段必须要该行-->
+            <!--<columnOverride column="字段名" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+        </table>
+
+        <table  tableName="attribute" domainObjectName="Attribute" >
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            <!-- 该行是避免生成BLOBs文件，数据库中只要保存text类型的字段必须要该行-->
+            <!--<columnOverride column="字段名" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+        </table>
+
+        <table  tableName="category" domainObjectName="Category" >
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            <!-- 该行是避免生成BLOBs文件，数据库中只要保存text类型的字段必须要该行-->
+            <!--<columnOverride column="字段名" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+        </table>
+
+        <table  tableName="checkin" domainObjectName="Checkin" >
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            <!-- 该行是避免生成BLOBs文件，数据库中只要保存text类型的字段必须要该行-->
+            <!--<columnOverride column="字段名" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+        </table>
+
+        <table  tableName="hours" domainObjectName="Hours" >
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            <!-- 该行是避免生成BLOBs文件，数据库中只要保存text类型的字段必须要该行-->
+            <!--<columnOverride column="字段名" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+        </table>
+
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,30 @@
+server:
+  port: 8040
+spring:
+  application:
+    name: yelp-gateway-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+zuul:
+  #ignored-services: yelp-provider-usc
+  #ignored-services: '*'   #忽略所有微服务，只路由routes指定的微服务
+  routes:
+    yelp-client-web-manage: /mng/** #自定义指定微服务的访问路径
+    usc-route:                      #同时指定微服务的serviceId和对应路径
+      service-id: yelp-provider-usc
+      url: http://localhost:8001/  #将/usc/** 映射到http://localhost:8001/**
+      path: /usc/**
+
+
+
