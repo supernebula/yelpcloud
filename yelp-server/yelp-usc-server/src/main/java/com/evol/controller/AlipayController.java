@@ -54,7 +54,7 @@ public class AlipayController {
     public String postPay(@RequestParam(name = "WIDout_trade_no", required = true) String out_trade_no
             , @RequestParam(name = "WIDsubject", required = true) String subject
             , @RequestParam(name = "WIDtotal_amount", required = true) String total_amount
-            , @RequestParam(name = "WIDbody", required = true) String body
+            , @RequestParam(name = "WIDbody", required = false) String body
             , HttpServletResponse response){
 
         // 超时时间 可空
