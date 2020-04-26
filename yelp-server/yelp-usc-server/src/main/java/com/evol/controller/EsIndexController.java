@@ -28,7 +28,9 @@ import java.util.Map;
 
 //https://www.cnblogs.com/java-spring/p/11721615.html
 
-@RequestMapping("/es")
+//https://www.cnblogs.com/lifengdi/archive/2019/09/20/11554923.html
+
+@RequestMapping("/esIndex")
 @RestController
 public class EsIndexController {
 
@@ -50,7 +52,7 @@ public class EsIndexController {
         boolean acknowledged = false;
 
         try{
-            CreateIndexRequest createRequest = new CreateIndexRequest("yelp");
+            CreateIndexRequest createRequest = new CreateIndexRequest("yelp_review");
             CreateIndexResponse createResponse = client.indices().create(createRequest, RequestOptions.DEFAULT);
             acknowledged = createResponse.isAcknowledged();
             System.out.println("acknowledged="+acknowledged);
